@@ -21,4 +21,4 @@ The file I place here for my POC is `run.sh` this is a very simple script that c
 `typer_back_door.sh` just waits until `streaming_client` proccess is ran on the system which is launched when the steamlink is connected to a Steam instance on a remote PC then excutes the `/home/steam/keyboard_emu` binary.
 
 #### Windows Execution  
-`keyboard_emu` Does as the name implies, it emulates keypresses as if a keyboard is plugged into the steamlink. With this capability the big picture "sandbox" is escaped and we pop calc.exe.
+`keyboard_emu` Does as the name implies, it emulates keypresses as if a keyboard is plugged into the steamlink. With this capability the big picture "sandbox" is escaped and we pop calc.exe. This is done by sending keypresses directly to `/dev/uinput`. `ALT+ENTER` escapes the "sandbox" and `WIN+X` then `I` Opens powershell as the current user. If we instead press `A` after `WIN+X` an admin powershell instance will be launched and will have to add keypresses to navigate the UAC prompt.
