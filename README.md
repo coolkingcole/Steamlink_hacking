@@ -26,7 +26,7 @@ Establish persistence and execute code on Windows hosts connected to the steamli
 #### Dropping
 The file I place here for my POC is `run.sh` this is a very simple script that copies a compiled binary placed in `/steamlink/config/keyboard_emu` and a script `/steamlink/config/typer_back_door.sh` into the home directory of a user named steam on the steamlink. Then the run.sh bash script appends `/home/steam/typer_back_door.sh &` to the end of one of the init.d startup scripts so that `typer_back_door.sh` will be ran in the background each boot.
 
-#### persistence
+#### Persistence
 `typer_back_door.sh` just waits until `streaming_client` proccess is ran on the system which is launched when the steamlink is connected to a Steam instance on a remote PC then excutes the `/home/steam/keyboard_emu` binary.
 
 #### Windows Execution  
