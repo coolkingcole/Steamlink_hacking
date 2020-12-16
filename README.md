@@ -4,7 +4,7 @@
 It was already known that placing a flash drive in a steamlink with a specific file structure is how the Steamlink can be updated (https://support.steampowered.com/kb_article.php?ref=3966-EFLV-7805) or ssh can be enabled with a non-empty file `/steamlink/config/system/enable_ssh.txt` (https://github.com/garbear/kodi-steamlink). 
 
 ## My work
-If the steamlink is booted with a flashdrive with the `enable_ssh.txt` file on it in the right place you can get root ssh access with the password steamlink123. This made working with the steamlink very easy. 
+If the steamlink is booted with a flashdrive with the `enable_ssh.txt` file on it in the right place you can get root ssh access with the password steamlink123. This made working with the steamlink very easy. `/etc/init.d/startup/S30sshd` is the script that enables ssh. The most resent versions of the firmware do not allow password auth so you will have to enable it in the `/etc/sshd_config`. I did this by connecting uart to the device and changing the file. There is definitely an easier way to do it, but I already had it wired up so that is what I did.
 
 I was able to find another special directory structure that can be placed on a flashdrive that allows any bash script to be ran. The init.d script at `/etc/init.d/startup/S01config` at line 121 is-
 ```
