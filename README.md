@@ -8,6 +8,11 @@ If the steamlink is booted with a flashdrive with the `enable_ssh.txt` file on i
 
 I was able to find another special directory structure that can be placed on a flashdrive that allows any bash script to be ran. The init.d script at `/etc/init.d/startup/S01config` at line 121 is-
 ```
+        # Run factory test if needed
+        FACTORY_TEST=${OVERRIDE}/factory_test/run.sh
+        if [ -f ${FACTORY_TEST} ]; then
+                sh ${FACTORY_TEST}
+        fi
 ```
 
 A file placed on a flashdrive at `/steamlink/factory_test/` will be ran at boot by `init.d` init.d scripts are ran right after the root filesystem is mounted, this makes it very easy to drop files onto the system and maintaine persistance if needed.
